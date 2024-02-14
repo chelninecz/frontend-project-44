@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import readlineSync from 'readline-sync';
 
 const isEven = (number) => number % 2 === 0;
