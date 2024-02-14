@@ -1,26 +1,22 @@
-import readlineSync from 'readline-sync';
+import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
 
 const isEven = (number) => number % 2 === 0;
 
 const getRandomInt = (max) => Math.floor(Math.random() * max + 1);
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
+  const name = askNameAndGreet();
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   let score = 0;
-  for (let i = 0; i < 3; i += 1) {
+  let playing = true;
+  while (playing) {
     const question = getRandomInt(100);
-    console.log(`Question: ${question}`);
-    const answer = readlineSync.question('Your answer: ').toLowerCase();
-    const correctAnswer = isEven(question) ? 'yes' : 'no';
-    if ((isEven(question) && answer === 'yes') || (!isEven(question) && answer === 'no')) {
-      console.log('Correct!');
-      score += 1;
-    } else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}`);
-      console.log(`Let's try again, ${name}!`);
-      break;
+    const answer = askQuestionGetAnswer(question).toLowerCase();
+    const correctAnswerText = isEven(question) ? 'yes' : 'no';
+    const isCorrect = correctAnswerText === answer;
+    const scoreInc = calcScore(isCorrect, answer, correctAnswerText, name);
+    score += scoreInc;
+    if (scoreInc === 0) {
+      playing = false;
     }
     if (score === 3) {
       console.log(`Congratulations, ${name}!`);

@@ -1,4 +1,4 @@
-import readlineSync from 'readline-sync';
+import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
 
 const generateQuestion = () => {
   const num1 = Math.floor(Math.random() * 100);
@@ -8,7 +8,7 @@ const generateQuestion = () => {
   const question = `${num1} ${operator} ${num2}`;
   return question;
 };
-const correctAnswer = (question) => {
+const corrAnswer = (question) => {
   const [num1, operator, num2] = question.split(' ');
   let result;
 
@@ -29,22 +29,18 @@ const correctAnswer = (question) => {
   return result;
 };
 export default () => {
-  console.log('Welcome to the Brain Games!');
-  const name = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
+  const name = askNameAndGreet();
   console.log('What is the result of the expression?');
   let score = 0;
-  for (let i = 0; i < 3; i += 1) {
+  let playing = true;
+  while (playing) {
     const question = generateQuestion();
-    console.log(`Question: ${question}`);
-    const answer = parseInt(readlineSync.question('Your answer: '), 10);
-    if (correctAnswer(question) === answer) {
-      console.log('Correct!');
-      score += 1;
-    } else {
-      console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer(question)}`);
-      console.log(`Let's try again, ${name}!`);
-      break;
+    const answer = parseInt(askQuestionGetAnswer(question), 10);
+    const isCorrect = corrAnswer(question) === answer;
+    const scoreInc = calcScore(isCorrect, answer, corrAnswer(question), name);
+    score += scoreInc;
+    if (scoreInc === 0) {
+      playing = false;
     }
     if (score === 3) {
       console.log(`Congratulations, ${name}!`);
