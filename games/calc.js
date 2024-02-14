@@ -1,10 +1,11 @@
-import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
+import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../src/index.js';
+import getRandomNum from '../src/randomGenerator.js';
 
 const generateQuestion = () => {
-  const num1 = Math.floor(Math.random() * 100);
-  const num2 = Math.floor(Math.random() * 100);
+  const num1 = getRandomNum(10);
+  const num2 = getRandomNum(10);
   const operators = ['+', '-', '*'];
-  const operator = operators[Math.floor(Math.random() * operators.length)];
+  const operator = operators[getRandomNum(operators.length) - 1];
   const question = `${num1} ${operator} ${num2}`;
   return question;
 };

@@ -1,15 +1,15 @@
-import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
+import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../src/index.js';
+import getRandomNum from '../src/randomGenerator.js';
 
 const isEven = (number) => number % 2 === 0;
 
-const getRandomInt = (max) => Math.floor(Math.random() * max + 1);
 export default () => {
   const name = askNameAndGreet();
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
   let score = 0;
   let playing = true;
   while (playing) {
-    const question = getRandomInt(100);
+    const question = getRandomNum(100);
     const answer = askQuestionGetAnswer(question).toLowerCase();
     const correctAnswerText = isEven(question) ? 'yes' : 'no';
     const isCorrect = correctAnswerText === answer;
