@@ -12,12 +12,12 @@ export const askQuestionGetAnswer = (question) => {
   return readlineSync.question('Your answer: ');
 };
 
-export const calcScore = (isCorrect, answer, corrAnswer, name) => {
+export const calcScore = (isCorrect, answer, correctAnswer, name) => {
   if (isCorrect) {
     console.log('Correct!');
     return 1;
   }
-  console.log(`${answer} is wrong answer ;(. Correct answer was ${corrAnswer}`);
+  console.log(`${answer} is wrong answer ;(. Correct answer was ${correctAnswer}`);
   console.log(`Let's try again, ${name}!`);
   return 0;
 };

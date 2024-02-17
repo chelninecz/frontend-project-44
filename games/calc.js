@@ -9,7 +9,7 @@ const generateQuestion = () => {
   const question = `${num1} ${operator} ${num2}`;
   return question;
 };
-const corrAnswer = (question) => {
+const correctAnswer = (question) => {
   const [num1, operator, num2] = question.split(' ');
   let result;
 
@@ -37,8 +37,8 @@ export default () => {
   while (playing) {
     const question = generateQuestion();
     const answer = parseInt(askQuestionGetAnswer(question), 10);
-    const isCorrect = corrAnswer(question) === answer;
-    const scoreInc = calcScore(isCorrect, answer, corrAnswer(question), name);
+    const isCorrect = correctAnswer(question) === answer;
+    const scoreInc = calcScore(isCorrect, answer, correctAnswer(question), name);
     score += scoreInc;
     if (scoreInc === 0) {
       playing = false;

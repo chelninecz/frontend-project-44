@@ -1,17 +1,27 @@
 import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../src/index.js';
 import getRandomNum from '../src/randomGenerator.js';
 
-const isEven = (number) => number % 2 === 0;
+const isPrime = (num) => {
+  if (num <= 1) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};
 
 export default () => {
   const name = askNameAndGreet();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
   let score = 0;
   let playing = true;
   while (playing) {
     const question = getRandomNum(100);
     const answer = askQuestionGetAnswer(question).toLowerCase();
-    const correctAnswer = isEven(question) ? 'yes' : 'no';
+    const correctAnswer = isPrime(question) ? 'yes' : 'no';
     const isCorrect = correctAnswer === answer;
     const scoreInc = calcScore(isCorrect, answer, correctAnswer, name);
     score += scoreInc;
