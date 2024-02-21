@@ -10,22 +10,22 @@ Any device capable of running a terminal or command line.
 
 ### Games are installed in 3 steps
 
-1. clone the repository with the git clone command
-2. install dependencies with npm ci command
-3. install games on the system using the npm link command
+1. clone the repository with the **git clone** command
+2. install dependencies with **make install** command
+3. install games on the system using the **npm link** command
 
 ### After installation, games are launched with the commands
 
 "Calculator"
-**brain-calc**
+**make brain-calc**  
 "Greatest common divisor"
-**brain-gcd**
+**make brain-gcd**  
 "Parity check"
-**brain-even**
+**make brain-even**  
 "Is it a prime number?"
-**brain-prime**
+**make brain-prime**  
 "Arithmetic progression"
-**brain-progression**
+**make brain-progression**  
 
 ## Gameplay demos
 
