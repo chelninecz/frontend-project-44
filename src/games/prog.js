@@ -1,4 +1,4 @@
-import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../src/index.js';
+import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
 
 const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const generateProgression = (start, difference, count) => {

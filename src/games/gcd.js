@@ -1,5 +1,5 @@
-import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../src/index.js';
-import getRandomNum from '../src/randomGenerator.js';
+import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
+import getRandomNum from '../randomGenerator.js';
 
 const generateQuestion = () => {
   const num1 = getRandomNum(100);
