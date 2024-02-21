@@ -22,3 +22,4 @@ const runEngine = (rules, generateRound) => {
 
   console.log(`Congratulations, ${name}!`);
 };
+export default runEngine;
