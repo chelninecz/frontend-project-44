@@ -1,14 +1,14 @@
-import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
-import getRandomNum from '../randomGenerator.js';
+import runEngine from '../index.js';
+import randomGenerator from '../randomGenerator.js';
 
 const generateQuestion = () => {
-  const num1 = getRandomNum(100);
-  const num2 = getRandomNum(100);
+  const num1 = randomGenerator();
+  const num2 = randomGenerator();
   const question = `${num1} ${num2}`;
   return question;
 };
 
-const corrAnswer = (question) => {
+const correctAnswer = (question) => {
   const [num1, num2] = question.split(' ');
   let num1Int = Number(num1);
   let num2Int = Number(num2);
@@ -21,24 +21,13 @@ const corrAnswer = (question) => {
   return num1Int;
 };
 
+const generateRound = () => {
+  const question = generateQuestion();
+  const answer = String(correctAnswer(question));
+  return [question, answer];
+};
+
 export default () => {
-  const name = askNameAndGreet();
-  console.log('Find the greatest common divisor of given numbers.');
-  let score = 0;
-  let playing = true;
-  while (playing) {
-    const question = generateQuestion();
-    const answer = askQuestionGetAnswer(question);
-    const correctAnswer = corrAnswer(question);
-    const isCorrect = correctAnswer === Number(answer);
-    const scoreInc = calcScore(isCorrect, answer, correctAnswer, name);
-    score += scoreInc;
-    if (scoreInc === 0) {
-      playing = false;
-    }
-    if (score === 3) {
-      console.log(`Congratulations, ${name}!`);
-      break;
-    }
-  }
+  const rules = 'Find the greatest common divisor of given numbers.';
+  runEngine(rules, generateRound);
 };

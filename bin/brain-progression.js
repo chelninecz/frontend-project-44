@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import prog from '../games/prog.js';
+import prog from '../src/games/prog.js';
 
 prog();

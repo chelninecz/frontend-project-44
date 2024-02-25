@@ -1,6 +1,6 @@
-import { askNameAndGreet, askQuestionGetAnswer, calcScore } from '../index.js';
+import runEngine from '../index.js';
+import randomGenerator from '../randomGenerator.js';
 
-const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const generateProgression = (start, difference, count) => {
   const progression = [];
   let current = start;
@@ -11,10 +11,10 @@ const generateProgression = (start, difference, count) => {
   return progression;
 };
 const generateQuestion = () => {
-  const start = randomNumber(1, 100);
-  const diff = randomNumber(1, 10);
-  const length = randomNumber(5, 10);
-  const position = randomNumber(0, length - 1);
+  const start = randomGenerator(1, 100);
+  const diff = randomGenerator(1, 10);
+  const length = randomGenerator(5, 10);
+  const position = randomGenerator(0, length - 1);
   const progression = generateProgression(start, diff, length);
   progression[position] = '..';
   const progressionStr = progression.join(' ');
@@ -22,23 +22,13 @@ const generateQuestion = () => {
   return [progressionStr, correctAnswer];
 };
 
+const generateRound = () => {
+  const question = generateQuestion();
+  const answer = String(question[1]);
+  return [question[0], answer];
+};
+
 export default () => {
-  const name = askNameAndGreet();
-  console.log('What number is missing in the progression?');
-  let score = 0;
-  let playing = true;
-  while (playing) {
-    const [question, correctAnswer] = generateQuestion();
-    const answer = askQuestionGetAnswer(question);
-    const isCorrect = correctAnswer === Number(answer);
-    const scoreInc = calcScore(isCorrect, answer, correctAnswer, name);
-    score += scoreInc;
-    if (scoreInc === 0) {
-      playing = false;
-    }
-    if (score === 3) {
-      console.log(`Congratulations, ${name}!`);
-      break;
-    }
-  }
+  const rules = 'What number is missing in the progression?';
+  runEngine(rules, generateRound);
 };

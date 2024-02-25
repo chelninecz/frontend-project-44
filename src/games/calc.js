@@ -12,33 +12,22 @@ const generateQuestion = () => {
 
 const correctAnswer = (question) => {
   const [num1, operator, num2] = question.split(' ');
-  let result;
 
   switch (operator) {
-    case '+':
-      result = Number(num1) + Number(num2);
-      break;
-    case '-':
-      result = Number(num1) - Number(num2);
-      break;
-    case '*':
-      result = Number(num1) * Number(num2);
-      break;
-    default:
-      result = 'Invalid operator';
+    case '+': return Number(num1) + Number(num2);
+    case '-': return Number(num1) - Number(num2);
+    case '*': return Number(num1) * Number(num2);
+    default: throw new Error(`Invalid operator - ${operator}`);
   }
-
-  return result;
 };
 
 const generateRound = () => {
   const question = generateQuestion();
-  const answer = correctAnswer(question);
-  return [question, Number(answer)];
+  const answer = String(correctAnswer(question));
+  return [question, answer];
 };
 
-const rules = 'What is the result of the expression?';
-
 export default () => {
+  const rules = 'What is the result of the expression?';
   runEngine(rules, generateRound);
 };

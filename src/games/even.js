@@ -9,8 +9,7 @@ const generateRound = () => {
   return [question, answer];
 };
 
-const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-
 export default () => {
+  const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
   runEngine(rules, generateRound);
 };
