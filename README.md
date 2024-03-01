@@ -4,9 +4,35 @@ Console application, which is a set of five simple mathematical games. They are 
 
 ## Minimum Requirements
 
-Any device capable of running a terminal or command line.
+This console application has been tested and is known to work on the following operating systems:
+
+- macOS version 10.15 and above
+- Ubuntu version 20.04 and above
+- Windows 10 version 1909 and above
+
+If you are using a different operating system, please let us know and we will do our best to ensure compatibility.
 
 ## Installation and launch
+
+### Installing dependencies
+
+Before installing the games, you need to make sure you have the following dependencies installed on your system:
+
+- Node.js version 14 or above
+- npm version 6 or above
+- Git version 2.25 or above
+
+To install these dependencies, follow these steps:
+
+1. Install Node.js and npm by following the instructions on the [official Node.js website](https://nodejs.org/en/download/).
+2. Install Git by following the instructions on the [official Git website](https://git-scm.com/downloads).
+3. Verify that Node.js, npm, and Git are installed correctly by running the following commands in your terminal or command prompt:
+
+node --version
+npm --version
+git --version
+
+If these commands return version numbers that match the requirements above, you are ready to install the games.
 
 ### Games are installed in 3 steps
 
