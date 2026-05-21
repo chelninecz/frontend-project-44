@@ -1,57 +1,116 @@
-# BRAIN GAMES
+# Brain Games
 
-Console application, which is a set of five simple mathematical games. They are built on the principle of popular mobile applications for brain training.
+A collection of five interactive mathematical games designed to train your brain. Built as a console application following the principles of popular brain-training mobile apps.
 
-## Minimum Requirements
+## 🎮 Available Games
 
-This console application has been tested and is known to work on the following operating systems:
+- **brain-even** — Determine if a number is even or odd
+- **brain-calc** — Solve basic arithmetic expressions
+- **brain-gcd** — Find the greatest common divisor of two numbers
+- **brain-prime** — Check if a number is prime
+- **brain-progression** — Identify the missing number in an arithmetic progression
 
-- macOS version 10.15 and above
-- Ubuntu version 20.04 and above
-- Windows 10 version 1909 and above
+## Requirements
 
-If you are using a different operating system, please let us know and we will do our best to ensure compatibility.
+### System Requirements
 
-## Installation and launch
+This application has been tested on:
 
-### Installing dependencies
+- macOS 10.15+
+- Ubuntu 20.04+
+- Windows 10 (version 1909)+
 
-Before installing the games, you need to make sure you have the following dependencies installed on your system:
+### Software Dependencies
 
-- Node.js version 14 or above
-- npm version 6 or above
-- Git version 2.25 or above
+- Node.js v14 or higher
+- npm v6 or higher
+- Git v2.25 or higher
 
-To install these dependencies, follow these steps:
+Verify your installations:
 
-1. Install Node.js and npm by following the instructions on the [official Node.js website](https://nodejs.org/en/download/).
-2. Install Git by following the instructions on the [official Git website](https://git-scm.com/downloads).
-3. Verify that Node.js, npm, and Git are installed correctly by running the following commands in your terminal or command prompt:
-
+```bash
 node --version
 npm --version
 git --version
+```
 
-If these commands return version numbers that match the requirements above, you are ready to install the games.
+## Installation
 
-### Games are installed in 3 steps
+### 1. Clone the Repository
 
-1. clone the repository with the **git clone** command
-2. install dependencies with **make install** command
-3. install games on the system using the **npm link** command
+```bash
+git clone <repository-url>
+cd <repository-directory>
+```
 
-### After installation, games are launched with the commands
+### 2. Install Dependencies
 
-"Calculator"
-**make brain-calc**  
-"Greatest common divisor"
-**make brain-gcd**  
-"Parity check"
-**make brain-even**  
-"Is it a prime number?"
-**make brain-prime**  
-"Arithmetic progression"
-**make brain-progression**  
+```bash
+make install
+```
+
+### 3. Link the Package (Optional)
+
+To use the games globally from anywhere in your terminal:
+
+```bash
+npm link
+```
+
+## Usage
+
+After installation, you can run any game using `make` commands:
+
+### Calculator
+
+Solve arithmetic expressions:
+
+```bash
+make brain-calc
+```
+
+### Greatest Common Divisor
+
+Find the GCD of two numbers:
+
+```bash
+make brain-gcd
+```
+
+### Parity Check
+
+Determine if a number is even:
+
+```bash
+make brain-even
+```
+
+### Prime Number Check
+
+Check if a number is prime:
+
+```bash
+make brain-prime
+```
+
+### Arithmetic Progression
+
+Find the missing number in a sequence:
+
+```bash
+make brain-progression
+```
+
+Alternatively, after running `npm link`, you can use the global commands directly:
+
+```bash
+brain-games      # Main entry point
+brain-even       # Even number game
+brain-calc       # Calculator game
+brain-gcd        # GCD game
+brain-prime      # Prime number game
+brain-progression # Progression game
+```  
 
 ## Gameplay demos
 
