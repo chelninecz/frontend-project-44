@@ -14,15 +14,15 @@ const generateQuestion = () => {
 // using the Euclidean algorithm and returns the result as a string.
 const correctAnswer = (question) => {
   const [num1, num2] = question.split(' ');
-  let num1Int = Number(num1);
-  let num2Int = Number(num2);
-  let result;
-  while (num2Int !== 0) {
-    result = num2Int;
-    num2Int = num1Int % num2Int;
-    num1Int = result;
+  let a = Number(num1);
+  let b = Number(num2);
+  // Euclidean algorithm: GCD(a, b) = GCD(b, a mod b)
+  while (b !== 0) {
+    const temp = b;
+    b = a % b;
+    a = temp;
   }
-  return num1Int;
+  return a;
 };
 
 // Generate a round by generating a question and its answer

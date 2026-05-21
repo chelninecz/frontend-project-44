@@ -7,10 +7,18 @@ const isPrime = (num) => {
   if (num <= 1) {
     return false;
   }
+  if (num <= 3) {
+    return true;
+  }
+  if (num % 2 === 0 || num % 3 === 0) {
+    return false;
+  }
   // We only need to check up to the square root of the number
-  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+  // Check only numbers of form 6k ± 1 for better performance
+  const limit = Math.floor(Math.sqrt(num));
+  for (let i = 5; i <= limit; i += 6) {
     // If the number is divisible by any other number, it's not prime
-    if (num % i === 0) {
+    if (num % i === 0 || num % (i + 2) === 0) {
       return false;
     }
   }
